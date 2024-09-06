@@ -1,4 +1,3 @@
-
 <h1>The Expense Tracker</h1>
 
 <h3>Overview</h3>
@@ -31,6 +30,7 @@
     <li>Start by signing up with a username, email, and password.
         </li>
         <li>If you already have an account, click "Login."</li>
+        </ul>
 <h6>2.Add Expenses:</h6>
 <ul>
     <li>Fill in the description, category, and amount of your expense, then click "Add."
@@ -39,9 +39,8 @@
         </ul>
 <h6>3.Set Budget:
 
-    
-    
     </h6>
+
 <ul>
     <li>Set a budget for any category through the budget form.
         </li>
@@ -59,10 +58,6 @@
         </li>
 <h6>6.Tax Calculator:
 
-    
-    
-    
-    
   </ul>  
     </h6>
 <ul>
