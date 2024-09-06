@@ -46,15 +46,13 @@
     <li>Set a budget for any category through the budget form.
         </li>
         <li>Receive alerts when you reach or exceed 80% of your budget.</li>
+        </ul>
 <h6>4.View Expenses:</h6>
 <ul>
     <li>All added expenses will appear in a list format.
-        
-        
-        
-        
         </li>
         <li>Use the category filter to view expenses in a specific category.</li>
+        </ul>
 <h6>5.Generate Charts:</h6>
 <ul>
     <li>Visualize your expenses by category in a pie chart, updated dynamically.
@@ -65,12 +63,13 @@
     
     
     
-    
+  </ul>  
     </h6>
 <ul>
     <li>Enter your income and click “Calculate” to estimate your taxable income and tax liability.
         </li>
         <li>The system will also provide relevant deductions and credits to optimize your taxes.</li>
+        </ul>
 <h6>7.Clear All Data:</h6>
 <ul>
     <li>Click "Delete All" to reset the tracker and remove all expenses.
