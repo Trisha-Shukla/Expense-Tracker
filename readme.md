@@ -34,9 +34,9 @@
 <h6>2.Add Expenses:</h6>
 <ul>
     <li>Fill in the description, category, and amount of your expense, then click "Add."
-
         </li>
         <li>The expense will be listed below with options to edit or delete.</li>
+        </ul>
 <h6>3.Set Budget:
 
     
