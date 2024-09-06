@@ -38,7 +38,6 @@
         <li>The expense will be listed below with options to edit or delete.</li>
         </ul>
 <h6>3.Set Budget:
-
     </h6>
 
 <ul>
