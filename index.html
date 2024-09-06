@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="form-section">
+    <div class="form-container" id="signupFormContainer">
+    <h2 id="form-title">Sign Up</h2>
+    <form id="signupForm">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit" id="submitBtn">Sign Up</button>
+    </form>
+    <div class="message" id="message"></div>
+    <div class="toggle-link" id="toggleForm">Already have an account? Login</div>
+</div>
+</div>
+<div id="expense-tracker-container">
+    <header>
+        <h1>Expense Tracker</h1>
+        <nav>
+            <ul>
+                <li><a href="#tracker">Expense Tracker</a></li>
+                <li><a href="#visualization">Data Visualization</a></li>                
+                <li><a href="#taxes">Taxes Calculator</a></li>
+                <li><a href="#advisor">AI Financial Advisor</a></li>
+            </ul>
+            <button id="log-out">Log Out</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="tracker">
+            <h2>Track Your Expenses</h2>
+            <form id="expense-form">
+                <label for="expense-name">Expense Name:</label>
+                <input type="text" id="expense-name" name="expense-name" required>
+
+                <label for="category">Category:</label>
+                <select id="category" name="category" required>
+                    <option value="food">Food</option>
+                    <option value="transportation">Transportation</option>
+                    <option value="utilities">Utilities</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" name="amount" required>
+
+                <button type="submit">Add Expense</button>
+            </form>
+            <h3>Expense List</h3>
+            <div id="filter-section">
+                <label for="filter-category">Filter by Category:</label>
+                <select id="filter-category">
+                    <option value="all">All</option>
+                    <option value="food">Food</option>
+                    <option value="transportation">Transportation</option>
+                    <option value="utilities">Utilities</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div id="budget-section">
+                <h3>Set Budget</h3>
+                <form id="budget-form">
+                    <label for="budget-category">Category:</label>
+                    <select id="budget-category">
+                        <option value="food">Food</option>
+                        <option value="transportation">Transportation</option>
+                        <option value="utilities">Utilities</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="other">Other</option>
+                    </select>
+            
+                    <label for="budget-amount">Budget Amount:</label>
+                    <input type="number" id="budget-amount" placeholder="Enter amount" required>
+            
+                    <button type="submit">Set Budget</button>
+                </form>
+            </div>
+            <div id="expense-list">
+                
+            </div>
+        </section>
+
+        <section id="visualization">
+            <h2>Expense Data Visualization</h2>
+            <canvas id="expense-chart" width="400" height="400" style="max-width: 100%;"></canvas>
+
+
+
+
+        </section>
+        <section id="taxes">
+            <h2>Taxes Calculator</h2>
+            <div id=tax-calculation>
+            <form id="tax-form">
+                <label for="income">Annual Income:</label>
+                <input type="number" id="income" name="income" required>
+
+               
+
+                <button type="submit">Calculate Taxes</button>
+            </form>
+
+            <div id="tax-result">
+                <h3>Estimated Taxes:</h3>
+            </div>
+
+            <div id="tour-guide">
+                <h3>Tax Planning Guide</h3>
+                <ul style="list-style: none;">
+                    <li>1. Enter your annual income and total expenses.</li>
+                    <li>2. The calculator will estimate your taxable income.</li>
+                    <li>3. Based on your income, potential deductions and credits will be displayed.</li>
+                    <li>4. Use this information to plan for tax season confidently.</li>
+                </ul>
+            </div>
+        </div>
+        </section>
+
+        <section id="advisor">
+            <h2>AI Financial Advisor</h2>
+            <p>Get personalized financial advice based on your spending patterns.</p>
+             <button id="ai-genrated-advice">Get Financial Advice</button>
+            <div id="ai-advice">
+            </div>
+        </section>
+    </main>
+    <button id="delete-all">Delete All</button>
+
+    <footer>
+        <p>&copy; 2024 Expense Tracker. All rights reserved.</p>
+    </footer>
+</div>
+    <script src="login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+    
+    <script src="taxform.js"></script>
+    <script type="importmap">
+        {
+          "imports": {
+            "@google/generative-ai": "https://esm.run/@google/generative-ai"
+          }
+        }
+      </script>
+  
+      <script type="module" >
+        import { GoogleGenerativeAI } from "@google/generative-ai";
+    //   const apiKey = 'AIzaSyCm0MDQZ5zKwdEzOYam-0H_GHz0u2BDUbs';
+        const genAI = new GoogleGenerativeAI(apiKey);
+        async function getGeminiResponse() {
+          const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+            const annualIncome=document.getElementById("income").value;
+            console.log(annualIncome);
+            const totalExpenses = expenses.reduce((sum, expense) => sum + expense.amount, 0);
+            
+            if(annualIncome && totalExpenses){
+          const prompt = `Given these total expenses ${totalExpenses} and anual income ${annualIncome} , provide general financial advice.`;
+  
+          const result = await model.generateContent(prompt);
+          const response = await result.response;
+          const text =  response.text();
+          document.getElementById("ai-advice").innerText = text;
+          console.log(text);}
+          else{
+            alert("Need your Annual Income and expenses to give an advise")
+        }
+        }
+        document.getElementById("ai-genrated-advice").addEventListener("click",getGeminiResponse)
+        
+        // getGeminiResponse();
+      </script>
+</body>
+</html>
